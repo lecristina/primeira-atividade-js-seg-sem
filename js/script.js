@@ -9,9 +9,9 @@ let arrayNomes = [];
 function renderizarLista() {
     lista.innerHTML = "";
     for (let x = 0; x < arrayNomes.length; x++) {
-        const liElement = document.createElement("li");
-        liElement.textContent = arrayNomes[x];
-        lista.appendChild(liElement);
+        const li = document.createElement("li");
+        li.textContent = arrayNomes[x];
+        lista.appendChild(li);
     }
 }
 
