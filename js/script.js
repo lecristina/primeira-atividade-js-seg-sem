@@ -1,36 +1,42 @@
-
-//const formInput = document.getElementById("form");
-const capturaNomeInput = document.getElementById("nome");
-//const adicionarNomeInput = document.getElementById("adicionar");
+const nomeInput = document.getElementById("nome");
+const adicionarInput = document.getElementById("adicionar");
+const ordemInput = document.getElementById("ordenar");
 const inverterInput = document.getElementById("inverter");
-const alfabeticoInput = document.getElementById("ordem");
-//const listaInput = document.getElementById("lista");
+const lista = document.getElementById("lista");
 
+let arrayNomes = [];
 
-let nome = [];
+function renderizarLista() {
+    lista.innerHTML = "";
+    for (let x = 0; x < arrayNomes.length; x++) {
+        const liElement = document.createElement("li");
+        liElement.textContent = arrayNomes[x];
+        lista.appendChild(liElement);
+    }
+}
 
-capturaNomeInput.addEventListener('submit', (event) => {
+adicionarInput.addEventListener('click', (event) => {
     event.preventDefault();
-    const valor = capturaNomeInput.value;
-    if (valor) {
-        nome.push(valor);
-        console.log(nome)
+    const value = nomeInput.value;
+    if (value !== undefined && value !== "") {
+        nomeInput.value = "";
+        arrayNomes.push(value);
+        console.log(value);
+        renderizarLista();
     }
 });
 
-alfabeticoInput.addEventListener('click', (event) => {
-    event.preventDefault();
-    if (nome != "") {
-        nome.sort();
-        console.log(nome)
-    }
+
+
+ordemInput.addEventListener('click', () => {
+    arrayNomes.sort();
+    renderizarLista();
+
 });
 
-inverterInput.addEventListener('click',(event) =>{
-    event.preventDefault();
-    if (nome != "") {
-        nome.reverse();
-        console.log(nome)
+inverterInput.addEventListener('click', () => {
+    arrayNomes.reverse();
+    renderizarLista();
 
-    }
 });
+
